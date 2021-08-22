@@ -16,3 +16,30 @@ describe('absolute', () => {
         expect(result).toBe(0);
     })
 });
+
+describe('greet', () => {
+    it('should return the greeting message', () => {
+        const result = lib.greet('Name');
+        expect(result).toMatch(/Name/);
+    })
+});
+
+describe('getCurrencies', () => {
+    it('should return supported currencies', () => {
+        const result = lib.getCurrencies();
+        expect(result).toEqual(expect.arrayContaining(['USD', 'AUD', 'EUR']))
+    });
+});
+
+describe('getProduct', () => {
+    it('should return the product with the given id', () => {
+        const result = lib.getProduct(1)
+        expect(result).toMatchObject({id:1 , price: 10})
+    });
+});
+
+describe('registerUser', () => {
+    it('should throw if username is falsy', () => {
+        expect(() => lib.registerUser(null))
+    });
+});
